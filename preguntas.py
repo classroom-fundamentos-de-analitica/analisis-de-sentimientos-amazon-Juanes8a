@@ -24,7 +24,7 @@ def pregunta_01():
     df = pd.read_csv(
         "amazon_cells_labelled.tsv",
         sep="\t",
-        header=0,
+        header=None,
         names=["msg","lbl"],
     )
 
@@ -126,7 +126,7 @@ def pregunta_04():
     pipeline = Pipeline(
         steps=[
             ("CountVectorizer", countVectorizer),
-            ("Bernoulli", BernoulliNB()),
+            ("BernoulliNB", BernoulliNB()),
         ],
     )
 
@@ -134,7 +134,7 @@ def pregunta_04():
     # considerar 10 valores entre 0.1 y 1.0 para el parámetro alpha de
     # BernoulliNB.
     param_grid = {
-        "alpha": np.linspace(0.1,1.0,10),
+        "BernoulliNB_alpha": np.linspace(0.1,1.0,10),
     }
 
     # Defina una instancia de GridSearchCV con el pipeline y el diccionario de
@@ -162,7 +162,7 @@ def pregunta_05():
     """
 
     # Importe confusion_matrix
-    from ____ import ____
+    from sklearn.metrics import confusion_matrix
 
     # Obtenga el pipeline de la pregunta 3.
     gridSearchCV = pregunta_04()
@@ -171,12 +171,12 @@ def pregunta_05():
     X_train, X_test, y_train, y_test = pregunta_02()
 
     # Evalúe el pipeline con los datos de entrenamiento usando la matriz de confusion.
-    cfm_train = ____(
-        y_true=____,
+    cfm_train = confusion_matrix(
+        y_true=y_train,
         y_pred=____.____(____),
     )
 
-    cfm_test = ____(
+    cfm_test = confusion_matrix(
         y_true=____,
         y_pred=____.____(____),
     )
