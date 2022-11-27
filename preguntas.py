@@ -173,12 +173,12 @@ def pregunta_05():
     # Evalúe el pipeline con los datos de entrenamiento usando la matriz de confusion.
     cfm_train = confusion_matrix(
         y_true=y_train,
-        y_pred=____.____(____),
+        y_pred=gridSearchCV.predict(X_train),
     )
 
     cfm_test = confusion_matrix(
-        y_true=____,
-        y_pred=____.____(____),
+        y_true=y_test,
+        y_pred=gridSearchCV.predict(X_test),
     )
 
     # Retorne la matriz de confusion de entrenamiento y prueba
@@ -199,7 +199,7 @@ def pregunta_06():
 
     # pronostique la polaridad del sentimiento para los datos
     # no etiquetados
-    y_untagged_pred = ____.____(____)
+    y_untagged_pred = gridSearchCV.predict(X_untagged)
 
     # Retorne el vector de predicciones
     return y_untagged_pred
